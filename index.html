@@ -404,9 +404,15 @@
     }
 	function openPDFPage() {
       const html = buildPDFHTML();
-      const url = `pdf-viewer.html?data=${encodeURIComponent(html)}`;
+
+      // Salva o HTML temporariamente
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
       window.open(url, '_blank');
       showStatus('Abrindo visualizador de PDF...');
+
+      // Libera memória após 5 minutos
+      setTimeout(() => URL.revokeObjectURL(url), 300000);
   }
 
     function buildPDFHTML() {
