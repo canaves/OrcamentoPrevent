@@ -131,24 +131,14 @@
 
       <script>
           function loadFromParams() {
-              const params = new URLSearchParams(window.location.search);
-              const data = params.get('data');
-              if (data) {
-                  document.getElementById('pdf-content').innerHTML = decodeURIComponent(data);
-
-                  // Remove o loading após carregar
-                  setTimeout(() => {
-                      const loading = document.querySelector('.loading');
-                      if (loading) loading.remove();
-                  }, 500);
-              } else {
-                  document.getElementById('pdf-content').innerHTML = `
-                      <div style="text-align: center; padding: 50px; color: #666;">
-                          <h2>Erro ao carregar o documento</h2>
-                          <p>Por favor, volte e gere o orçamento novamente.</p>
-                      </div>
-                  `;
-              }
+              // Carrega diretamente do Blob (não precisa de parâmetro)
+              // Esta página deve ser aberta pelo index.html
+              document.getElementById('pdf-content').innerHTML = `
+                  <div style="text-align: center; padding: 50px; color: #666;">
+                      <h2>Erro ao carregar o documento</h2>
+                      <p>Por favor, volte e gere o orçamento novamente.</p>
+                  </div>
+              `;
           }
 
           function downloadPDF() {
