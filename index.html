@@ -260,6 +260,7 @@
         <div class="card-title">👤 Dados do Cliente</div>
         <div class="grid">
             <div style="grid-column: span 2;"><label>Nome / Razão Social</label><input id="cli-nome" placeholder="Nome do cliente"></div>
+			<div><label>CPF / CNPJ</label><input id="cli-doc" placeholder="000.000.000-00"></div>
             <div><label>Telefone</label><input id="cli-fone" class="phone-mask" placeholder="(00) 00000-0000"></div>
         </div>
         <div class="grid">
@@ -531,6 +532,7 @@
         };
         const cli = {
             nome: document.getElementById('cli-nome').value,
+			doc: document.getElementById('cli-doc').value,
             fone: document.getElementById('cli-fone').value,
             end: document.getElementById('cli-end').value
         };
@@ -570,6 +572,7 @@
             <table class="pdf-table pdf-no-break">
                 <tr>
                     <td width="60%"><b>Cliente:</b> ${cli.nome || '—'}</td>
+					<td width="40%"><b>CPF/CNPJ:</b> ${cli.doc || '—'}</td>
                     <td width="40%"><b>Telefone:</b> ${cli.fone || '—'}</td>
                 </tr>
                 <tr>
